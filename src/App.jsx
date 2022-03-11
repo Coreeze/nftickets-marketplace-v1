@@ -1,4 +1,4 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import {
   BrowserRouter as Router,
@@ -11,13 +11,14 @@ import Account from "components/Account";
 import Chains from "components/Chains";
 import NFTBalance from "components/NFTBalance";
 import NFTTokenIds from "components/NFTTokenIds";
-import { Menu, Layout} from "antd";
+import { Menu, Layout } from "antd";
 import SearchCollections from "components/SearchCollections";
 import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import Text from "antd/lib/typography/Text";
 import NFTMarketTransactions from "components/NFTMarketTransactions";
+import logo from "./NFTickets_logo.png";
 const { Header, Footer } = Layout;
 
 const styles = {
@@ -33,7 +34,7 @@ const styles = {
     position: "fixed",
     zIndex: 1,
     width: "100%",
-    background: "#fff",
+    background: "#0E0044",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -54,8 +55,6 @@ const App = ({ isServerInfo }) => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
 
-
-
   const [inputValue, setInputValue] = useState("explore");
 
   useEffect(() => {
@@ -68,7 +67,7 @@ const App = ({ isServerInfo }) => {
       <Router>
         <Header style={styles.header}>
           <Logo />
-          <SearchCollections setInputValue={setInputValue}/>
+          <SearchCollections setInputValue={setInputValue} />
           <Menu
             theme="light"
             mode="horizontal"
@@ -78,17 +77,25 @@ const App = ({ isServerInfo }) => {
               fontWeight: "500",
               marginLeft: "50px",
               width: "100%",
+              background: "#0E0044",
+              // color: "white",
             }}
             defaultSelectedKeys={["nftMarket"]}
           >
-            <Menu.Item key="nftMarket" onClick={() => setInputValue("explore")} >
-              <NavLink to="/NFTMarketPlace">🛒 Explore Market</NavLink>
+            <Menu.Item key="nftMarket" onClick={() => setInputValue("explore")}>
+              <NavLink to="/NFTMarketPlace" style={{ color: "white" }}>
+                Explore Events
+              </NavLink>
             </Menu.Item>
             <Menu.Item key="nft">
-              <NavLink to="/nftBalance">🖼 Your Collection</NavLink>
+              <NavLink to="/nftBalance" style={{ color: "white" }}>
+                Your Tickets
+              </NavLink>
             </Menu.Item>
             <Menu.Item key="transactions">
-              <NavLink to="/Transactions">📑 Your Transactions</NavLink>
+              <NavLink to="/Transactions" style={{ color: "white" }}>
+                Your Transactions
+              </NavLink>
             </Menu.Item>
           </Menu>
           <div style={styles.headerRight}>
@@ -103,7 +110,10 @@ const App = ({ isServerInfo }) => {
               <NFTBalance />
             </Route>
             <Route path="/NFTMarketPlace">
-              <NFTTokenIds inputValue={inputValue} setInputValue={setInputValue}/>
+              <NFTTokenIds
+                inputValue={inputValue}
+                setInputValue={setInputValue}
+              />
             </Route>
             <Route path="/Transactions">
               <NFTMarketTransactions />
@@ -113,39 +123,7 @@ const App = ({ isServerInfo }) => {
         </div>
       </Router>
       <Footer style={{ textAlign: "center" }}>
-        <Text style={{ display: "block" }}>
-          ⭐️ Please star this{" "}
-          <a
-            href="https://github.com/ethereum-boilerplate/ethereum-boilerplate/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            boilerplate
-          </a>
-          , every star makes us very happy!
-        </Text>
-
-        <Text style={{ display: "block" }}>
-          🙋 You have questions? Ask them on the {""}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://forum.moralis.io/t/ethereum-boilerplate-questions/3951/29"
-          >
-            Moralis forum
-          </a>
-        </Text>
-
-        <Text style={{ display: "block" }}>
-          📖 Read more about{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://moralis.io?utm_source=boilerplatehosted&utm_medium=todo&utm_campaign=ethereum-boilerplat"
-          >
-            Moralis
-          </a>
-        </Text>
+        <Text style={{ display: "block" }}>Powered by NFTickets</Text>
       </Footer>
     </Layout>
   );
@@ -153,7 +131,7 @@ const App = ({ isServerInfo }) => {
 
 export const Logo = () => (
   <div style={{ display: "flex" }}>
-    <svg
+    {/* <svg
       width="60"
       height="38"
       viewBox="0 0 50 38"
@@ -172,8 +150,8 @@ export const Logo = () => (
         d="M39.7135 25.1249C37.1094 25.1025 34.9991 27.2127 34.9766 29.8169C34.9542 32.4211 37.0645 34.5313 39.6686 34.5538C41.1503 34.5538 42.5647 33.8578 43.4626 32.6905C43.53 32.6007 43.5973 32.4884 43.6871 32.3986C45.1015 30.221 44.4729 27.3025 42.2953 25.9107C41.532 25.3943 40.634 25.1249 39.7135 25.1249Z"
         fill="#B7E803"
       />
-    </svg>
-
+    </svg> */}
+    <img src={logo} alt="nologo" width="100px" height="50px" />
   </div>
 );
 

@@ -68,7 +68,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
   const nativeName = getNativeByChain(chainId);
   const contractABIJson = JSON.parse(contractABI);
   const { Moralis } = useMoralis();
-  const queryMarketItems = useMoralisQuery("MarketItems");
+  const queryMarketItems = useMoralisQuery("CreatedNFTickets");
   const fetchMarketItems = JSON.parse(
     JSON.stringify(queryMarketItems.data, [
       "objectId",
@@ -148,7 +148,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
 
   async function updateSoldMarketItem() {
     const id = getMarketItem(nftToBuy).objectId;
-    const marketList = Moralis.Object.extend("MarketItems");
+    const marketList = Moralis.Object.extend("CreatedNFTickets");
     const query = new Moralis.Query(marketList);
     await query.get(id).then((obj) => {
       obj.set("sold", true);
@@ -241,7 +241,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                 }
                 key={index}
               >
-                <Meta title={nft.name} />
+                <Meta title={nft.name} description={nft.subtitle} />
               </Card>
             ))}
 
@@ -305,6 +305,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                   } ${nativeName}`}
                 >
                   <img
+                    alt={""}
                     src={nftToBuy?.image}
                     style={{
                       width: "250px",
@@ -324,6 +325,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
             onOk={() => setVisibility(false)}
           >
             <img
+              alt={""}
               src={nftToBuy?.image}
               style={{
                 width: "250px",
