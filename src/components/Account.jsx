@@ -7,6 +7,7 @@ import { useState } from "react";
 import Address from "./Address/Address";
 import { SelectOutlined } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
+import NativeBalance from "components/NativeBalance";
 const styles = {
   account: {
     height: "42px",
@@ -44,7 +45,8 @@ function Account() {
     <>
       <div style={styles.account} onClick={() => setIsModalVisible(true)}>
         <p style={{ marginRight: "5px", ...styles.text }}>
-          {getEllipsisTxt(walletAddress, 6)}
+          {/* {getEllipsisTxt(walletAddress, 6)} */}
+          MyAccount
         </p>
         <Blockie currentWallet scale={3} />
       </div>
@@ -60,7 +62,7 @@ function Account() {
         style={{ fontSize: "16px", fontWeight: "500" }}
         width="400px"
       >
-        Account
+        My Account
         <Card
           style={{
             marginTop: "10px",
@@ -74,6 +76,7 @@ function Account() {
             copyable
             style={{ fontSize: "20px" }}
           />
+          <NativeBalance />
           <div style={{ marginTop: "10px", padding: "0 10px" }}>
             <a
               href={`${getExplorer(chainId)}/address/${walletAddress}`}

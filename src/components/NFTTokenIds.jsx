@@ -209,7 +209,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                       fontWeight: "normal",
                     }}
                   >
-                    Collection Size: {`${totalNFTs}`}
+                    Event Size: {`${totalNFTs}`}
                   </div>
                 </>
               </div>

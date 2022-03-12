@@ -15,8 +15,13 @@ function SearchCollections({ setInputValue }) {
     <>
       <Select
         showSearch
-        style={{ width: "1000px", marginLeft: "20px", background: "#0E0044" }}
-        placeholder="Find a Collection"
+        style={{
+          width: "500px",
+          marginLeft: "20px",
+          background: "#0E0044",
+          borderRadius: 10,
+        }}
+        placeholder="Find the next best event"
         optionFilterProp="children"
         onChange={onChange}
       >

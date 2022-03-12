@@ -99,8 +99,8 @@ const App = ({ isServerInfo }) => {
             </Menu.Item>
           </Menu>
           <div style={styles.headerRight}>
-            <Chains />
-            <NativeBalance />
+            {/* <Chains /> */}
+            {/* <NativeBalance /> */}
             <Account />
           </div>
         </Header>
