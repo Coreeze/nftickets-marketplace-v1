@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { getNativeByChain } from "helpers/networks";
 import { getCollectionsByChain } from "helpers/collections";
-import {
-  useMoralis,
-  useMoralisQuery,
-  useNewMoralisObject,
-} from "react-moralis";
+import { useMoralis, useMoralisQuery } from "react-moralis";
 import { Card, Image, Tooltip, Modal, Badge, Alert, Spin } from "antd";
 import { useNFTTokenIds } from "hooks/useNFTTokenIds";
 import {
@@ -16,17 +12,42 @@ import {
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import { getExplorer } from "helpers/networks";
 import { useWeb3ExecuteFunction } from "react-moralis";
-const { Meta } = Card;
 
+// carousel
+import Carousel, { CarouselItem } from "./Carousel/Carousel";
+import untolb from "../images/untolb.jpg";
+import mannerblue from "../images/mannerblue.jpg";
+const carouselDummyData = [
+  {
+    name: "UntolB",
+    image: untolb,
+  },
+  {
+    name: "MannerBlue",
+    image: mannerblue,
+  },
+  {
+    name: "TEST 3",
+    image: mannerblue,
+  },
+  {
+    name: "TEST 4",
+    image: untolb,
+  },
+];
+
+const { Meta } = Card;
 const styles = {
   NFTs: {
     display: "flex",
     flexWrap: "wrap",
     WebkitBoxPack: "start",
-    justifyContent: "flex-start",
+    // justifyContent: "flex-start",
+    justifyContent: "center",
     margin: "0 auto",
     maxWidth: "1000px",
     gap: "10px",
+    marginTop: "2vw",
   },
   banner: {
     display: "flex",
@@ -62,6 +83,8 @@ function NFTTokenIds({ inputValue, setInputValue }) {
   const [visible, setVisibility] = useState(false);
   const [nftToBuy, setNftToBuy] = useState(null);
   const [loading, setLoading] = useState(false);
+  // carousel
+  const [mainEvents, setMainEvents] = useState(carouselDummyData);
   const contractProcessor = useWeb3ExecuteFunction();
   const { chainId, marketAddress, contractABI, walletAddress } =
     useMoralisDapp();
@@ -217,6 +240,11 @@ function NFTTokenIds({ inputValue, setInputValue }) {
           </>
         )}
 
+        <Carousel mainEvents={mainEvents}>
+          {mainEvents.map((e) => {
+            return <CarouselItem mainEvent={e}>{e.name}</CarouselItem>;
+          })}
+        </Carousel>
         <div style={styles.NFTs}>
           {inputValue === "explore" &&
             NFTCollections?.map((nft, index) => (
@@ -229,7 +257,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                     />
                   </Tooltip>,
                 ]}
-                style={{ width: 240, border: "2px solid #e7eaf3" }}
+                style={{ width: 400, border: "2px solid #e7eaf3" }}
                 cover={
                   <Image
                     preview={false}
@@ -237,6 +265,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                     fallback={fallbackImg}
                     alt=""
                     style={{ height: "240px" }}
+                    className={nft.image}
                   />
                 }
                 key={index}
