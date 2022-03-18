@@ -129,7 +129,13 @@ const App = ({ isServerInfo }) => {
           <Redirect to="/NFTMarketPlace" />
         </div>
       </Router>
-      <Footer style={{ textAlign: "center", backgroundColor: "transparent" }}>
+      <Footer
+        style={{
+          justifyContent: "end",
+          textAlign: "center",
+          backgroundColor: "transparent",
+        }}
+      >
         <Text style={{ display: "block", color: "white" }}>
           Powered by NFTickets
         </Text>

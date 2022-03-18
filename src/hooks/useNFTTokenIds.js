@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useMoralisWeb3Api, useMoralisWeb3ApiCall } from "react-moralis";
 import { useIPFS } from "./useIPFS";
 
-export const useNFTTokenIds = (addr) => {
+export const useNFTTokenIds = (addr, setLoading) => {
   const { token } = useMoralisWeb3Api();
   const { chainId } = useMoralisDapp();
   const { resolveLink } = useIPFS();
@@ -21,8 +21,6 @@ export const useNFTTokenIds = (addr) => {
     address: addr,
     limit: 10,
   });
-  console.log("addr: ", addr);
-  console.log("chainId: ", chainId);
   // console.log(
   //   useMoralisWeb3ApiCall(token.getAllTokenIds, {
   //     chain: chainId,
@@ -33,10 +31,13 @@ export const useNFTTokenIds = (addr) => {
 
   useEffect(() => {
     async function fetchNfts() {
+      setLoading(true);
+      console.log("data: ", addr == "explore");
       if (data?.result) {
         const NFTs = data.result;
         setTotalNFTs(data.total);
         setFetchSuccess(true);
+        setLoading(false);
         for (let NFT of NFTs) {
           if (NFT?.metadata) {
             NFT.metadata = JSON.parse(NFT.metadata);
@@ -50,21 +51,22 @@ export const useNFTTokenIds = (addr) => {
                 });
             } catch (error) {
               setFetchSuccess(false);
+              setLoading(false);
 
               /*          !!Temporary work around to avoid CORS issues when retrieving NFT images!!
             Create a proxy server as per https://dev.to/terieyenike/how-to-create-a-proxy-server-on-heroku-5b5c
             Replace <your url here> with your proxy server_url below
             Remove comments :)
 */
-              try {
-                await fetch(`<your url here>/${NFT.token_uri}`)
-                  .then((response) => response.json())
-                  .then((data) => {
-                    NFT.image = resolveLink(data.image);
-                  });
-              } catch (error) {
-                setFetchSuccess(false);
-              }
+              // try {
+              //   await fetch(`<your url here>/${NFT.token_uri}`)
+              //     .then((response) => response.json())
+              //     .then((data) => {
+              //       NFT.image = resolveLink(data.image);
+              //     });
+              // } catch (error) {
+              //   setFetchSuccess(false);
+              // }
             }
           }
         }
@@ -72,6 +74,7 @@ export const useNFTTokenIds = (addr) => {
       }
     }
     fetchNfts();
+    // setLoading(false);
   }, [data]);
 
   return {
