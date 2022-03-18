@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useMoralis } from "react-moralis";
 import {
   BrowserRouter as Router,
@@ -6,19 +6,28 @@ import {
   Route,
   NavLink,
   Redirect,
+  useHistory,
 } from "react-router-dom";
+
+import UserProfile from "./components/Profile/UserProfile";
+import AuthPage from "./pages/AuthPage";
+// import HomePage from "./pages/HomePage";
+import AuthContext from "./store/auth-context";
+import MainNavigation from "./components/Layout/MainNavigation";
+
 import Account from "components/Account";
-import Chains from "components/Chains";
+// import Chains from "components/Chains";
 import NFTBalance from "components/NFTBalance";
 import NFTTokenIds from "components/NFTTokenIds";
 import { Menu, Layout } from "antd";
 import SearchCollections from "components/SearchCollections";
 import "antd/dist/antd.css";
-import NativeBalance from "components/NativeBalance";
+// import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import Text from "antd/lib/typography/Text";
 import NFTMarketTransactions from "components/NFTMarketTransactions";
 import logo from "./NFTickets_logo.png";
+
 const { Header, Footer } = Layout;
 
 const styles = {
@@ -52,6 +61,7 @@ const styles = {
   },
 };
 const App = ({ isServerInfo }) => {
+  // moralis
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
 
@@ -61,6 +71,18 @@ const App = ({ isServerInfo }) => {
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated, isWeb3Enabled]);
+
+  // auth
+  const authCtx = useContext(AuthContext);
+  //check if the user is already logged in and then show or not the login page
+  const isLoggedIn = authCtx.isLoggedIn;
+  //function for logout button
+  const history = useHistory();
+  const logoutHandler = () => {
+    authCtx.logout();
+    //redirect back to the main page. should be changed to navigation guards. for now leave
+    history.replace("/");
+  };
 
   return (
     <Layout style={{ height: "100vh", overflow: "auto" }}>
@@ -88,14 +110,41 @@ const App = ({ isServerInfo }) => {
               </NavLink>
             </Menu.Item>
             <Menu.Item key="nft">
-              <NavLink to="/nftBalance" style={{ color: "white" }}>
-                Your Tickets
-              </NavLink>
+              {/* decide what to show based on the fact that a user is loggedIn */}
+              {isLoggedIn && (
+                <NavLink to="/nftBalance" style={{ color: "white" }}>
+                  Your Tickets
+                </NavLink>
+              )}
             </Menu.Item>
             <Menu.Item key="transactions">
-              <NavLink to="/Transactions" style={{ color: "white" }}>
-                Your Transactions
-              </NavLink>
+              {/* decide what to show based on the fact that a user is loggedIn */}
+              {isLoggedIn && (
+                <NavLink to="/Transactions" style={{ color: "white" }}>
+                  Your Transactions
+                </NavLink>
+              )}
+            </Menu.Item>
+            {/* auth */}
+            {/* style to move right in navbar */}
+            <Menu.Item key="auth" style={{ marginLeft: "auto" }}>
+              {/* decide what to show based on the fact that a user is loggedIn */}
+              {!isLoggedIn && (
+                <NavLink to="/auth" style={{ color: "white" }}>
+                  Login
+                </NavLink>
+              )}
+              {/* for pass reset, no need for MVP */}
+              {/* {isLoggedIn && (<li><Link to='/profile'>Profile</Link></li>)} */}
+              {isLoggedIn && (
+                <NavLink
+                  to="/auth"
+                  onClick={logoutHandler}
+                  style={{ color: "white" }}
+                >
+                  Logout
+                </NavLink>
+              )}
             </Menu.Item>
           </Menu>
           <div style={styles.headerRight}>
@@ -117,6 +166,22 @@ const App = ({ isServerInfo }) => {
             </Route>
             <Route path="/Transactions">
               <NFTMarketTransactions />
+            </Route>
+
+            {/* auth */}
+            {!authCtx.isLoggedIn && (
+              <Route path="/auth">
+                <AuthPage />
+              </Route>
+            )}
+            {/* show only when user is logged in */}
+            <Route path="/profile">
+              {authCtx.isLoggedIn && <UserProfile />}
+              {!authCtx.isLoggedIn && <Redirect to="/auth" />}
+            </Route>
+            {/* if user enters something invalid or /profile without being logged in */}
+            <Route path="*">
+              <Redirect to="/" />
             </Route>
           </Switch>
           <Redirect to="/NFTMarketPlace" />

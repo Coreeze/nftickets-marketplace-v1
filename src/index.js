@@ -5,7 +5,9 @@ import { MoralisProvider } from "react-moralis";
 import "./index.css";
 import QuickStart from "components/QuickStart";
 import { MoralisDappProvider } from "./providers/MoralisDappProvider/MoralisDappProvider";
-
+// auth
+import { BrowserRouter } from 'react-router-dom';
+import { AuthContextProvider } from './store/auth-context';
 /** Get your free Moralis Account https://moralis.io/ */
 
 const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
@@ -17,9 +19,13 @@ const Application = () => {
     return (
       <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
         <MoralisDappProvider>
-          <App isServerInfo />
-        </MoralisDappProvider>
-      </MoralisProvider>
+          <AuthContextProvider>
+            <BrowserRouter>
+              <App isServerInfo />
+            </BrowserRouter>
+          </AuthContextProvider>
+        </MoralisDappProvider >
+      </MoralisProvider >
     );
   else {
     return (
