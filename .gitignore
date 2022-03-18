@@ -35,3 +35,5 @@ typechain
 /Truffle/data
 
 nftickets-marketplace-v1.code-workspace
+
+test.json
