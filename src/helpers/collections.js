@@ -1,4 +1,5 @@
-import untolb from "../images/untolb.jpg"
+import untolb from "../untolb.jpg";
+
 export const networkCollections = {
   "0x13881": [
     //Add Your Collections here
