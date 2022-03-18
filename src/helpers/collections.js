@@ -13,7 +13,7 @@ export const networkCollections = {
       image: untolb,
       name: "UNTOLB",
       subtitle: "Buy your NFTicket now!",
-      addrs: "0x22Ab4ED33eEB5C3FB0052C5f81C359b3FbFD1A8f",
+      addrs: "0x3F93850945e1dFC72aEa7630E80406095bF0ca9b",
     },
     // {
     //   image:

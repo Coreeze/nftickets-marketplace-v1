@@ -29,23 +29,22 @@ const styles = {
     gap: "10px",
   },
   banner: {
+    backgroundColor: "white",
     display: "flex",
     justifyContent: "space-evenly",
-    alignItems: "center",
+    // alignItems: "center",
     margin: "0 auto",
-    width: "600px",
-    //borderRadius: "10px",
-    height: "150px",
+    width: "800px",
+    borderRadius: "10px",
     marginBottom: "40px",
     paddingBottom: "20px",
+    paddingTop: "20px",
     borderBottom: "solid 1px #e3e3e3",
   },
   logo: {
-    height: "115px",
-    width: "115px",
-    borderRadius: "50%",
-    // positon: "relative",
-    // marginTop: "-80px",
+    height: "215px",
+    width: "215px",
+    borderRadius: "10px",
     border: "solid 4px white",
   },
   text: {
@@ -167,6 +166,11 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     );
     return result;
   };
+  console.log("NFTTokenIds: ", NFTTokenIds);
+
+  function separateEvents(NFTTokenIds) {
+    let events = [];
+  }
 
   return (
     <>
@@ -194,7 +198,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
             <div style={styles.banner}>
               <Image
                 preview={false}
-                src={NFTTokenIds[0]?.image || "error"}
+                src={NFTTokenIds[0]?.metadata.eventImage || "error"}
                 fallback={fallbackImg}
                 alt=""
                 style={styles.logo}
