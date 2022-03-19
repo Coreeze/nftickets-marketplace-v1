@@ -1,4 +1,6 @@
-import untolb from "../untolb.jpg";
+import untolb from "../images/untolb.jpg";
+import event2 from "../images/event2.jpg";
+import event3 from "../images/event3.jpg";
 
 export const networkCollections = {
   "0x13881": [
@@ -11,6 +13,18 @@ export const networkCollections = {
     // },
     {
       image: untolb,
+      name: "UNTOLB",
+      subtitle: "Buy your NFTicket now!",
+      addrs: "0x3F93850945e1dFC72aEa7630E80406095bF0ca9b",
+    },
+    {
+      image: event2,
+      name: "UNTOLB",
+      subtitle: "Buy your NFTicket now!",
+      addrs: "0x3F93850945e1dFC72aEa7630E80406095bF0ca9b",
+    },
+    {
+      image: event3,
       name: "UNTOLB",
       subtitle: "Buy your NFTicket now!",
       addrs: "0x3F93850945e1dFC72aEa7630E80406095bF0ca9b",

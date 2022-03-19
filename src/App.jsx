@@ -130,7 +130,7 @@ const styles = {
     justifyContent: "center",
     fontFamily: "AuthenticSans90, sans-serif",
     color: "#041836",
-    marginTop: "70px",
+    // marginTop: "70px",
     padding: "10px",
   },
   header: {

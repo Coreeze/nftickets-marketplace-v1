@@ -17,45 +17,12 @@ import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvide
 import { getExplorer } from "helpers/networks";
 import { useWeb3ExecuteFunction } from "react-moralis";
 import { css } from "@emotion/react";
+import "./styles.css";
 import CircleLoader from "react-spinners/ClipLoader";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
 const { Meta } = Card;
-
-const styles = {
-  NFTs: {
-    display: "flex",
-    flexWrap: "wrap",
-    WebkitBoxPack: "start",
-    justifyContent: "flex-start",
-    margin: "0 auto",
-    maxWidth: "1000px",
-    gap: "10px",
-  },
-  banner: {
-    backgroundColor: "white",
-    display: "flex",
-    justifyContent: "space-evenly",
-    // alignItems: "center",
-    margin: "0 auto",
-    width: "800px",
-    borderRadius: "10px",
-    marginBottom: "40px",
-    paddingBottom: "20px",
-    paddingTop: "20px",
-    borderBottom: "solid 1px #e3e3e3",
-  },
-  logo: {
-    height: "215px",
-    width: "215px",
-    borderRadius: "10px",
-    border: "solid 4px white",
-  },
-  text: {
-    color: "#041836",
-    fontSize: "27px",
-    fontWeight: "bold",
-  },
-};
 
 function NFTTokenIds({ inputValue, setInputValue }) {
   const fallbackImg =
@@ -235,36 +202,74 @@ function NFTTokenIds({ inputValue, setInputValue }) {
           </>
         )}
 
-        <div style={styles.NFTs}>
+        <Carousel
+          emulateTouch="true"
+          width={"90vw"}
+          // infiniteLoop
+          // autoPlay
+          interval={3000}
+          centerMode
+          centerSlidePercentage={90}
+          showStatus={false}
+          swipeScrollTolerance={10}
+          selectedItem={1}
+        >
           {inputValue === "explore" &&
             NFTCollections?.map((nft, index) => (
-              <Card
-                hoverable
-                actions={[
-                  <Tooltip
-                    title="View Collection"
-                    style={{ fontFamily: "AuthenticSans90" }}
-                  >
-                    <RightCircleOutlined
-                      onClick={() => setInputValue(nft?.addrs)}
-                    />
-                  </Tooltip>,
-                ]}
-                style={{ width: 240, border: "2px solid #e7eaf3" }}
-                cover={
-                  <Image
-                    preview={false}
-                    src={nft?.image || "error"}
-                    fallback={fallbackImg}
-                    alt=""
-                    style={{ height: "240px" }}
-                  />
-                }
-                key={index}
-              >
-                <Meta title={nft.name} description={nft.subtitle} />
-              </Card>
+              // <Card
+              //   hoverable
+              //   actions={[
+              //     <Tooltip
+              //       title="View Collection"
+              //       style={{ fontFamily: "AuthenticSans90" }}
+              //     >
+              //       <RightCircleOutlined
+              //         style={{ size: "20px" }}
+              //         onClick={() => setInputValue(nft?.addrs)}
+              //       />
+              //     </Tooltip>,
+              //   ]}
+              //   style={{ width: 240, borderRadius: "10px" }}
+              //   cover={
+              //     <Image
+              //       preview={false}
+              //       src={nft?.image || "error"}
+              //       fallback={fallbackImg}
+              //       alt=""
+              //       style={{ height: "240px", borderRadius: "10px" }}
+              //     />
+              //   }
+              //   key={index}
+              // >
+              //   <Meta title={nft.name} description={nft.subtitle} />
+              // </Card>
+              // <div
+              //   key={index}
+              //   style={{
+              //     height: "500px",
+              //     width: "100%",
+              //     margin: "10px",
+              //     display: "inline-flex",
+              //     borderRadius: "10px",
+              //     // padding: "10px",
+              //   }}
+              // >
+              <Image
+                preview={false}
+                src={nft?.image || "error"}
+                fallback={fallbackImg}
+                alt=""
+                style={{
+                  height: "100%",
+                  width: "1000px",
+                  borderRadius: "10px",
+                  filter: "contrast(1.1) brightness(0.85)",
+                }}
+              />
+              // </div>
             ))}
+        </Carousel>
+        <div style={styles.NFTs}>
           {inputValue !== "explore" &&
             NFTTokenIds.slice(0, 20).map((nft, index) => (
               <Card
@@ -346,5 +351,42 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     </>
   );
 }
+
+const styles = {
+  NFTs: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    WebkitBoxPack: "start",
+    justifyContent: "flex-start",
+    margin: "0 auto",
+    maxWidth: "1000px",
+    gap: "10px",
+  },
+  banner: {
+    backgroundColor: "white",
+    display: "flex",
+    justifyContent: "space-evenly",
+    // alignItems: "center",
+    margin: "0 auto",
+    width: "800px",
+    borderRadius: "10px",
+    marginBottom: "40px",
+    paddingBottom: "20px",
+    paddingTop: "20px",
+    borderBottom: "solid 1px #e3e3e3",
+  },
+  logo: {
+    height: "215px",
+    width: "215px",
+    borderRadius: "10px",
+    border: "solid 4px white",
+  },
+  text: {
+    color: "#041836",
+    fontSize: "27px",
+    fontWeight: "bold",
+  },
+};
 
 export default NFTTokenIds;
