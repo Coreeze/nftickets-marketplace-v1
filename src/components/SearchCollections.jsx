@@ -12,27 +12,27 @@ function SearchCollections({ setInputValue }) {
   }
 
   return (
-    <>
-      <Select
-        showSearch
-        style={{
-          width: "500px",
-          marginLeft: "20px",
-          background: "#0E0044",
-          borderRadius: 10,
-        }}
-        placeholder="Find the next best event"
-        optionFilterProp="children"
-        onChange={onChange}
-      >
-        {NFTCollections &&
-          NFTCollections.map((collection, i) => (
-            <Option value={collection.addrs} key={i}>
-              {collection.name}
-            </Option>
-          ))}
-      </Select>
-    </>
+    <Select
+      showSearch
+      style={{
+        width: "100%",
+        marginLeft: "20px",
+        background: "#0E0044",
+        borderRadius: "10px",
+        // height: "53px",
+        padding: "0px 10px",
+      }}
+      placeholder="Find the next best event"
+      optionFilterProp="children"
+      onChange={onChange}
+    >
+      {NFTCollections &&
+        NFTCollections.map((collection, i) => (
+          <Option value={collection.addrs} key={i}>
+            {collection.name}
+          </Option>
+        ))}
+    </Select>
   );
 }
 export default SearchCollections;

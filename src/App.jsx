@@ -18,7 +18,9 @@ import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import Text from "antd/lib/typography/Text";
 import NFTMarketTransactions from "components/NFTMarketTransactions";
+import TextField from "@mui/material/TextField";
 import logo from "./NFTickets_logo.png";
+import UnstyledInput from "components/SearchBar";
 const { Header, Footer } = Layout;
 
 const styles = {
@@ -31,16 +33,17 @@ const styles = {
     padding: "10px",
   },
   header: {
-    position: "fixed",
+    position: "relative",
     zIndex: 1,
     width: "100%",
-    background: "#0E0044",
+    background: "transparent",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     fontFamily: "Roboto, sans-serif",
     padding: "0 10px",
-    boxShadow: "0 1px 10px rgb(151 164 175 / 10%)",
+    margin: "10px 0px",
+    // boxShadow: "0 1px 10px rgb(151 164 175 / 10%)",
   },
   headerRight: {
     display: "flex",
@@ -73,7 +76,7 @@ const App = ({ isServerInfo }) => {
       <Router>
         <Header style={styles.header}>
           <Logo />
-          <SearchCollections setInputValue={setInputValue} />
+          <UnstyledInput />
           <Menu
             theme="light"
             mode="horizontal"
@@ -81,8 +84,6 @@ const App = ({ isServerInfo }) => {
               display: "flex",
               fontSize: "17px",
               fontWeight: "500",
-              marginLeft: "50px",
-              width: "100%",
               background: "#0E0044",
               borderBottom: "0px",
               // color: "white",
@@ -105,10 +106,11 @@ const App = ({ isServerInfo }) => {
               </NavLink>
             </Menu.Item>
           </Menu>
+          <Account />
           <div style={styles.headerRight}>
             {/* <Chains /> */}
             {/* <NativeBalance /> */}
-            <Account />
+            {/* <Account /> */}
           </div>
         </Header>
         <div style={styles.content}>
@@ -145,8 +147,8 @@ const App = ({ isServerInfo }) => {
 };
 
 export const Logo = () => (
-  <div style={{ display: "flex" }}>
-    <img src={logo} alt="nologo" width="100px" height="50px" />
+  <div style={{ display: "flex", marginLeft: "20px", marginRight: "20px" }}>
+    <img src={logo} alt="nologo" width="120px" height="60px" />
   </div>
 );
 
