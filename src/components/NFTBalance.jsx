@@ -6,6 +6,7 @@ import { FileSearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import { getExplorer } from "helpers/networks";
 import { useWeb3ExecuteFunction } from "react-moralis";
+import CircleLoader from "react-spinners/ClipLoader";
 const { Meta } = Card;
 
 const styles = {
@@ -13,7 +14,7 @@ const styles = {
     display: "flex",
     flexWrap: "wrap",
     WebkitBoxPack: "start",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     margin: "0 auto",
     maxWidth: "1000px",
     gap: "10px",
@@ -21,13 +22,13 @@ const styles = {
 };
 
 function NFTBalance() {
-  const { NFTBalance, fetchSuccess } = useNFTBalance();
+  const [loading, setLoading] = useState(false);
+  const { NFTBalance, fetchSuccess } = useNFTBalance(setLoading);
   const { chainId, marketAddress, contractABI } = useMoralisDapp();
   const { Moralis } = useMoralis();
   const [visible, setVisibility] = useState(false);
   const [nftToSend, setNftToSend] = useState(null);
   const [price, setPrice] = useState(1);
-  const [loading, setLoading] = useState(false);
   const contractProcessor = useWeb3ExecuteFunction();
   const contractABIJson = JSON.parse(contractABI);
   const listItemFunction = "createMarketItem";
@@ -164,6 +165,12 @@ function NFTBalance() {
   return (
     <>
       <div style={styles.NFTs}>
+        <CircleLoader
+          color={"#ffffff"}
+          loading={loading}
+          css={"display: block;margin: 0 auto;border-color: white;"}
+          size={150}
+        />
         {contractABIJson.noContractDeployed && (
           <>
             <Alert

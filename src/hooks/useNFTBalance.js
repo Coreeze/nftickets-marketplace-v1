@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { useMoralisWeb3Api, useMoralisWeb3ApiCall } from "react-moralis";
 import { useIPFS } from "./useIPFS";
 
-export const useNFTBalance = (options) => {
+export const useNFTBalance = (setLoading) => {
+  // console.log(options);
   const { account } = useMoralisWeb3Api();
   const { chainId } = useMoralisDapp();
   const { resolveLink } = useIPFS();
@@ -13,11 +14,12 @@ export const useNFTBalance = (options) => {
     data,
     error,
     isLoading,
-  } = useMoralisWeb3ApiCall(account.getNFTs, { chain: chainId, ...options });
+  } = useMoralisWeb3ApiCall(account.getNFTs, { chain: chainId });
   const [fetchSuccess, setFetchSuccess] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       if (data?.result) {
         const NFTs = data.result;
         setFetchSuccess(true);
@@ -35,6 +37,7 @@ export const useNFTBalance = (options) => {
                 });
             } catch (error) {
               setFetchSuccess(false);
+              setLoading(false);
 
               /*          !!Temporary work around to avoid CORS issues when retrieving NFT images!!
             Create a proxy server as per https://dev.to/terieyenike/how-to-create-a-proxy-server-on-heroku-5b5c
@@ -56,6 +59,7 @@ export const useNFTBalance = (options) => {
           }
         }
         setNFTBalance(NFTs);
+        setLoading(false);
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }
