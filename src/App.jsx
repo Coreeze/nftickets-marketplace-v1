@@ -19,7 +19,7 @@ import "./style.css";
 import Text from "antd/lib/typography/Text";
 import NFTMarketTransactions from "components/NFTMarketTransactions";
 import TextField from "@mui/material/TextField";
-import logo from "./NFTickets_logo.png";
+import logo from "./logov5.png";
 import UnstyledInput from "components/SearchBar";
 const { Header, Footer } = Layout;
 
@@ -41,7 +41,7 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     fontFamily: "Roboto, sans-serif",
-    padding: "0 10px",
+    padding: "1.25rem",
     margin: "10px 0px",
     // boxShadow: "0 1px 10px rgb(151 164 175 / 10%)",
   },
@@ -81,6 +81,7 @@ const App = ({ isServerInfo }) => {
             theme="light"
             mode="horizontal"
             style={{
+              width: "1080px",
               display: "flex",
               fontSize: "17px",
               fontWeight: "500",
@@ -147,8 +148,8 @@ const App = ({ isServerInfo }) => {
 };
 
 export const Logo = () => (
-  <div style={{ display: "flex", marginLeft: "20px", marginRight: "20px" }}>
-    <img src={logo} alt="nologo" width="120px" height="60px" />
+  <div style={{ display: "flex", marginLeft: "1rem", marginRight: "1rem" }}>
+    <img src={logo} alt="nologo" width="150px" height="70px" />
   </div>
 );
 

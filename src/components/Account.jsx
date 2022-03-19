@@ -8,22 +8,6 @@ import Address from "./Address/Address";
 import { SelectOutlined } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import NativeBalance from "components/NativeBalance";
-const styles = {
-  account: {
-    height: "42px",
-    padding: "0 15px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "fit-content",
-    borderRadius: "12px",
-    backgroundColor: "rgb(244, 244, 244)",
-    cursor: "pointer",
-  },
-  text: {
-    color: "#21BF96",
-  },
-};
 
 function Account() {
   const { authenticate, isAuthenticated, logout } = useMoralis();
@@ -109,5 +93,24 @@ function Account() {
     </>
   );
 }
+
+const styles = {
+  account: {
+    height: "50px",
+    padding: "0 35px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "fit-content",
+    borderRadius: "1rem",
+    backgroundColor: "#5f2ad2",
+    cursor: "pointer",
+  },
+  text: {
+    color: "white",
+    fontSize: "1.05rem",
+    fontWeight: "500",
+  },
+};
 
 export default Account;
