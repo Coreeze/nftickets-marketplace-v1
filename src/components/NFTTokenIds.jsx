@@ -241,7 +241,10 @@ function NFTTokenIds({ inputValue, setInputValue }) {
               <Card
                 hoverable
                 actions={[
-                  <Tooltip title="View Collection">
+                  <Tooltip
+                    title="View Collection"
+                    style={{ fontFamily: "AuthenticSans90" }}
+                  >
                     <RightCircleOutlined
                       onClick={() => setInputValue(nft?.addrs)}
                     />

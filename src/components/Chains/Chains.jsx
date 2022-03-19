@@ -11,7 +11,7 @@ const styles = {
     alignItems: "center",
     height: "42px",
     fontWeight: "500",
-    fontFamily: "Roboto, sans-serif",
+    fontFamily: "AuthenticSans90, sans-serif",
     fontSize: "14px",
     padding: "0 10px",
   },
@@ -103,7 +103,7 @@ function Chains() {
           <span style={{ marginLeft: "5px" }}>{item.value}</span>
         </Menu.Item>
       ))}
-    </Menu> 
+    </Menu>
   );
 
   return (

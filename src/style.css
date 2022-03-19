@@ -19,3 +19,17 @@
   overflow: auto;
   border-radius: 1rem;
 }
+
+@font-face {
+  font-family: "AuthenticSans90";
+  src: local("AuthenticSans90"),
+    url(./fonts/AUTHENTICSans-90.woff) format("woff");
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+@font-face {
+  font-family: "DrukWideCy";
+  src: local("DrukWideCy"), url(./fonts/DrukWideCy.woff) format("woff");
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}

@@ -23,36 +23,6 @@ import logo from "./logov5.png";
 import UnstyledInput from "components/SearchBar";
 const { Header, Footer } = Layout;
 
-const styles = {
-  content: {
-    display: "flex",
-    justifyContent: "center",
-    fontFamily: "Roboto, sans-serif",
-    color: "#041836",
-    marginTop: "130px",
-    padding: "10px",
-  },
-  header: {
-    position: "relative",
-    zIndex: 1,
-    width: "100%",
-    background: "transparent",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    fontFamily: "Roboto, sans-serif",
-    padding: "1.25rem",
-    margin: "10px 0px",
-    // boxShadow: "0 1px 10px rgb(151 164 175 / 10%)",
-  },
-  headerRight: {
-    display: "flex",
-    gap: "20px",
-    alignItems: "center",
-    fontSize: "15px",
-    fontWeight: "600",
-  },
-};
 const App = ({ isServerInfo }) => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
@@ -114,6 +84,7 @@ const App = ({ isServerInfo }) => {
             {/* <Account /> */}
           </div>
         </Header>
+        <div style={styles.mainTitle}>EXPLORE THE NEXT GENERATION EVENTS</div>
         <div style={styles.content}>
           <Switch>
             <Route path="/nftBalance">
@@ -139,12 +110,56 @@ const App = ({ isServerInfo }) => {
           backgroundColor: "transparent",
         }}
       >
-        <Text style={{ display: "block", color: "white" }}>
+        <Text
+          style={{
+            display: "block",
+            color: "white",
+            fontFamily: "AuthenticSans90",
+          }}
+        >
           Powered by NFTickets
         </Text>
       </Footer>
     </Layout>
   );
+};
+
+const styles = {
+  content: {
+    display: "flex",
+    justifyContent: "center",
+    fontFamily: "AuthenticSans90, sans-serif",
+    color: "#041836",
+    marginTop: "70px",
+    padding: "10px",
+  },
+  header: {
+    position: "relative",
+    zIndex: 1,
+    width: "100%",
+    background: "transparent",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    fontFamily: "AuthenticSans90, sans-serif",
+    padding: "1.25rem",
+    margin: "10px 0px",
+    // boxShadow: "0 1px 10px rgb(151 164 175 / 10%)",
+  },
+  headerRight: {
+    display: "flex",
+    gap: "20px",
+    alignItems: "center",
+    fontSize: "15px",
+    fontWeight: "600",
+  },
+  mainTitle: {
+    color: "white",
+    fontFamily: "DrukWideCy",
+    alignSelf: "center",
+    margin: "40px 30px",
+    fontSize: "30px",
+  },
 };
 
 export const Logo = () => (
