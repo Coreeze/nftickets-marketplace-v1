@@ -1,4 +1,5 @@
 import untolb from "../images/untolb.jpg";
+import event1 from "../images/event1.png";
 import event2 from "../images/event2.jpg";
 import event3 from "../images/event3.jpg";
 
@@ -15,18 +16,40 @@ export const networkCollections = {
       image: untolb,
       name: "UNTOLB",
       subtitle: "Buy your NFTicket now!",
+      eventSize: "100.000",
+      location: "Munich, Germany",
+      date: "20.03.2022",
+      issuer: "NFTickets",
+      addrs: "0x3F93850945e1dFC72aEa7630E80406095bF0ca9b",
+    },
+    {
+      image: event1,
+      name: "LOL FINALS",
+      subtitle: "Buy your NFTicket now!",
+      eventSize: "40.000",
+      location: "Seol, South Korea",
+      date: "20.03.2022",
+      issuer: "NFTickets",
       addrs: "0x3F93850945e1dFC72aEa7630E80406095bF0ca9b",
     },
     {
       image: event2,
-      name: "UNTOLB",
+      name: "LOKKKA",
       subtitle: "Buy your NFTicket now!",
+      eventSize: "30.000",
+      location: "Ibiza, Spain",
+      date: "20.04.2022",
+      issuer: "NFTickets",
       addrs: "0x3F93850945e1dFC72aEa7630E80406095bF0ca9b",
     },
     {
       image: event3,
-      name: "UNTOLB",
+      name: "NEVERSEA",
       subtitle: "Buy your NFTicket now!",
+      eventSize: "50.000",
+      location: "Amterdam, Netherlands",
+      date: "20.05.2022",
+      issuer: "NFTickets",
       addrs: "0x3F93850945e1dFC72aEa7630E80406095bF0ca9b",
     },
     // {

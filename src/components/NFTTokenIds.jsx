@@ -204,12 +204,12 @@ function NFTTokenIds({ inputValue, setInputValue }) {
 
         <Carousel
           emulateTouch="true"
-          width={"90vw"}
+          width={"100vw"}
           // infiniteLoop
           // autoPlay
           interval={3000}
           centerMode
-          centerSlidePercentage={90}
+          // centerSlidePercentage={80}
           showStatus={false}
           swipeScrollTolerance={10}
           selectedItem={1}
@@ -254,18 +254,205 @@ function NFTTokenIds({ inputValue, setInputValue }) {
               //     // padding: "10px",
               //   }}
               // >
-              <Image
-                preview={false}
-                src={nft?.image || "error"}
-                fallback={fallbackImg}
-                alt=""
+
+              <div
+                key={index}
                 style={{
-                  height: "100%",
-                  width: "1000px",
-                  borderRadius: "10px",
-                  filter: "contrast(1.1) brightness(0.85)",
+                  position: "relative",
+                  justifyContent: "center",
+                  display: "inline-flex",
                 }}
-              />
+              >
+                <Image
+                  preview={false}
+                  src={nft?.image || "error"}
+                  fallback={fallbackImg}
+                  alt=""
+                  style={{
+                    height: "70vh",
+                    width: "70vw",
+                    borderRadius: "10px",
+                    filter: "contrast(1.1) brightness(0.85)",
+                    display: "block",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    // bottom: "0px",
+                    right: "0px",
+                    // background: "rgb(0, 0, 0)",
+                    background: "rgba(0, 0, 0, 0.2)" /* Black see-through */,
+                    color: "#f1f1f1",
+                    width: "100%",
+                    height: "100%",
+                    // color: "white",
+                    fontSize: "20px",
+                    padding: "20px",
+                    textAlign: "center",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      fontFamily: "AuthenticSans90",
+                      fontSize: "12px",
+                      color: "#ffffff",
+                    }}
+                  >
+                    EVENT
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      fontFamily: "DrukWideCy",
+                      fontSize: "28px",
+                    }}
+                  >
+                    {nft.name}
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      fontFamily: "AuthenticSans90",
+                      fontSize: "12px",
+                      color: "#ffffff",
+                    }}
+                  >
+                    WHERE
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      fontFamily: "DrukWideCy",
+                      fontSize: "28px",
+                    }}
+                  >
+                    {nft.location}
+                  </div>
+                  <div
+                    style={{
+                      position: "absolute",
+                      right: "0px",
+                      top: "0px",
+                      display: "flex",
+                      flexDirection: "column",
+                      padding: "20px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        fontFamily: "AuthenticSans90",
+                        fontSize: "12px",
+                        color: "#ffffff",
+                      }}
+                    >
+                      WHEN
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        fontFamily: "DrukWideCy",
+                        fontSize: "28px",
+                      }}
+                    >
+                      {nft.date}
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        fontFamily: "AuthenticSans90",
+                        fontSize: "12px",
+                        color: "#ffffff",
+                      }}
+                    >
+                      EVENT SIZE
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        fontFamily: "DrukWideCy",
+                        fontSize: "28px",
+                      }}
+                    >
+                      {nft.eventSize}
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: "10px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        fontFamily: "AuthenticSans90",
+                        fontSize: "8px",
+                        color: "#ffffff",
+                      }}
+                    >
+                      ISSUER
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        fontFamily: "DrukWideCy",
+                        fontSize: "12px",
+                        // paddingBottom: "10px",
+                      }}
+                    >
+                      {nft.issuer}
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: "10px",
+                      right: "20px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        fontFamily: "AuthenticSans90",
+                        fontSize: "8px",
+                        color: "#ffffff",
+                      }}
+                    >
+                      ADDR
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        fontFamily: "DrukWideCy",
+                        fontSize: "12px",
+                      }}
+                    >
+                      {nft.addrs.substring(0, 5) +
+                        "..." +
+                        nft.addrs.substring(39, 42)}
+                    </div>
+                  </div>
+                  <div
+                    onClick={() => setInputValue(nft?.addrs)}
+                    style={{
+                      backgroundColor: "white",
+                      color: "#5f2ad2",
+                      padding: "20px",
+                      marginTop: "200px",
+                      borderRadius: "15px",
+                      display: "inline-flex",
+                      fontFamily: "DrukWideCy",
+                      cursor: "pointer",
+                    }}
+                  >
+                    BUY NOW
+                  </div>
+                </div>
+              </div>
               // </div>
             ))}
         </Carousel>

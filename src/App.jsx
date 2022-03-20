@@ -84,7 +84,7 @@ const App = ({ isServerInfo }) => {
             {/* <Account /> */}
           </div>
         </Header>
-        <div style={styles.mainTitle}>EXPLORE THE NEXT GENERATION EVENTS</div>
+        <div style={styles.mainTitle}>OWN THE MOMENT</div>
         <div style={styles.content}>
           <Switch>
             <Route path="/nftBalance">
@@ -157,8 +157,8 @@ const styles = {
     color: "white",
     fontFamily: "DrukWideCy",
     alignSelf: "center",
-    margin: "40px 30px",
-    fontSize: "30px",
+    margin: "20px 30px",
+    fontSize: "40px",
   },
 };
 
