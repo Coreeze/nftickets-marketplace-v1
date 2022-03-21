@@ -84,7 +84,9 @@ const App = ({ isServerInfo }) => {
             {/* <Account /> */}
           </div>
         </Header>
-        <div style={styles.mainTitle}>OWN THE MOMENT</div>
+        {inputValue === "explore" && (
+          <div style={styles.mainTitle}>OWN THE MOMENT</div>
+        )}
         <div style={styles.content}>
           <Switch>
             <Route path="/nftBalance">

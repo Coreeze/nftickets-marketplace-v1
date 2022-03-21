@@ -45,7 +45,7 @@ const StyledInputElement = styled("input")(
 `
 );
 
-const StyledRootElement = styled("root")(
+const StyledRootElement = styled("div")(
   ({ theme }) => `
     z-index: 3;
     height: 50px;

@@ -203,7 +203,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
         )}
 
         <Carousel
-          emulateTouch="true"
+          emulateTouch={true}
           width={"100vw"}
           // infiniteLoop
           // autoPlay
@@ -213,6 +213,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
           showStatus={false}
           swipeScrollTolerance={10}
           selectedItem={1}
+          showThumbs={false}
         >
           {inputValue === "explore" &&
             NFTCollections?.map((nft, index) => (
