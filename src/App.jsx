@@ -40,7 +40,7 @@ const App = ({ isServerInfo }) => {
         height: "100vh",
         overflow: "auto",
         background:
-          "linear-gradient(0deg, rgba(55,0,68,1) 0%, rgba(14,0,68,1) 100%)",
+          "linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(179, 179,179,1) 100%)",
       }}
     >
       <Router>
@@ -55,7 +55,7 @@ const App = ({ isServerInfo }) => {
               display: "flex",
               fontSize: "17px",
               fontWeight: "500",
-              background: "#0E0044",
+              background: "rgba(179, 179,179,0)",
               borderBottom: "0px",
               // color: "white",
             }}
@@ -115,7 +115,7 @@ const App = ({ isServerInfo }) => {
         <Text
           style={{
             display: "block",
-            color: "white",
+            color: "black",
             fontFamily: "AuthenticSans90",
           }}
         >
@@ -165,8 +165,17 @@ const styles = {
 };
 
 export const Logo = () => (
-  <div style={{ display: "flex", marginLeft: "1rem", marginRight: "1rem" }}>
-    <img src={logo} alt="nologo" width="150px" height="70px" />
+  <div
+    style={{
+      display: "flex",
+      margin: "0rem 0px",
+      fontFamily: "DrukWideCy",
+      fontSize: "1.3rem",
+      color: "#5f2ad2",
+    }}
+  >
+    {/* <img src={logo} alt="nologo" width="150px" height="70px" /> */}
+    NFTickets
   </div>
 );
 

@@ -40,7 +40,7 @@ export const networkCollections = {
       location: "Ibiza, Spain",
       date: "20.04.2022",
       issuer: "NFTickets",
-      addrs: "0x3F93850945e1dFC72aEa7630E80406095bF0ca9b",
+      addrs: "0xa7753aB7b190d7D1147FE006E9553899fa93a4f7",
     },
     {
       image: event3,

@@ -58,6 +58,9 @@ function NFTTokenIds({ inputValue, setInputValue }) {
   const purchaseItemFunction = "createMarketSale";
   const NFTCollections = getCollectionsByChain(chainId);
 
+  console.log("NFTCollections ", NFTCollections);
+  console.log("NFTTokenIds ", NFTTokenIds);
+
   let [color, setColor] = useState("#ffffff");
 
   async function purchase() {
@@ -177,6 +180,17 @@ function NFTTokenIds({ inputValue, setInputValue }) {
               </>
             )}
             <div style={styles.banner}>
+              <div style={styles.text}>
+                <div style={styles.subText}>20 MAR 2022</div>
+                <div>{`${NFTTokenIds[0]?.name}`}</div>
+                <div style={styles.subText}>by Mega Parties Spain</div>
+                <div style={{ paddingTop: "2rem" }}></div>
+                <div style={styles.subText}>IN</div>
+                <div>Ibizza, Spain</div>
+                <div style={styles.subText}>
+                  Event capacity: {`${totalNFTs}`}
+                </div>
+              </div>
               <Image
                 preview={false}
                 src={NFTTokenIds[0]?.metadata.eventImage || "error"}
@@ -184,20 +198,6 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                 alt=""
                 style={styles.logo}
               />
-              <div style={styles.text}>
-                <>
-                  <div>{`${NFTTokenIds[0]?.name}`}</div>
-                  <div
-                    style={{
-                      fontSize: "15px",
-                      color: "#9c9c9c",
-                      fontWeight: "normal",
-                    }}
-                  >
-                    Event Size: {`${totalNFTs}`}
-                  </div>
-                </>
-              </div>
             </div>
           </>
         )}
@@ -209,7 +209,6 @@ function NFTTokenIds({ inputValue, setInputValue }) {
           // autoPlay
           interval={3000}
           centerMode
-          // centerSlidePercentage={80}
           showStatus={false}
           swipeScrollTolerance={10}
           selectedItem={1}
@@ -217,45 +216,6 @@ function NFTTokenIds({ inputValue, setInputValue }) {
         >
           {inputValue === "explore" &&
             NFTCollections?.map((nft, index) => (
-              // <Card
-              //   hoverable
-              //   actions={[
-              //     <Tooltip
-              //       title="View Collection"
-              //       style={{ fontFamily: "AuthenticSans90" }}
-              //     >
-              //       <RightCircleOutlined
-              //         style={{ size: "20px" }}
-              //         onClick={() => setInputValue(nft?.addrs)}
-              //       />
-              //     </Tooltip>,
-              //   ]}
-              //   style={{ width: 240, borderRadius: "10px" }}
-              //   cover={
-              //     <Image
-              //       preview={false}
-              //       src={nft?.image || "error"}
-              //       fallback={fallbackImg}
-              //       alt=""
-              //       style={{ height: "240px", borderRadius: "10px" }}
-              //     />
-              //   }
-              //   key={index}
-              // >
-              //   <Meta title={nft.name} description={nft.subtitle} />
-              // </Card>
-              // <div
-              //   key={index}
-              //   style={{
-              //     height: "500px",
-              //     width: "100%",
-              //     margin: "10px",
-              //     display: "inline-flex",
-              //     borderRadius: "10px",
-              //     // padding: "10px",
-              //   }}
-              // >
-
               <div
                 key={index}
                 style={{
@@ -458,7 +418,16 @@ function NFTTokenIds({ inputValue, setInputValue }) {
             ))}
         </Carousel>
         <div style={styles.NFTs}>
-          {inputValue !== "explore" &&
+          {inputValue !== "explore" && (
+            <Image
+              preview={false}
+              src={NFTTokenIds[0]?.image || "error"}
+              fallback={fallbackImg}
+              alt=""
+              style={styles.ticket}
+            />
+          )}
+          {/* {inputValue !== "explore" &&
             NFTTokenIds.slice(0, 20).map((nft, index) => (
               <Card
                 hoverable
@@ -494,7 +463,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                 )}
                 <Meta title={nft.name} description={`#${nft.token_id}`} />
               </Card>
-            ))}
+            ))} */}
         </div>
         {getMarketItem(nftToBuy) ? (
           <Modal
@@ -550,30 +519,59 @@ const styles = {
     margin: "0 auto",
     maxWidth: "1000px",
     gap: "10px",
+    boxShadow: "13px 13px 20px #9E9E9E",
+    backgroundColor: "white",
+    borderRadius: "10px",
   },
   banner: {
     backgroundColor: "white",
+    boxShadow: "13px 13px 20px #9E9E9E",
     display: "flex",
     justifyContent: "space-evenly",
     // alignItems: "center",
     margin: "0 auto",
-    width: "800px",
+    // width: "800px",
     borderRadius: "10px",
     marginBottom: "40px",
     paddingBottom: "20px",
-    paddingTop: "20px",
+    // paddingTop: "20px",
+    padding: "20px",
     borderBottom: "solid 1px #e3e3e3",
   },
   logo: {
-    height: "215px",
-    width: "215px",
+    height: "415px",
+    width: "415px",
     borderRadius: "10px",
-    border: "solid 4px white",
+    // border: "solid 4px white",
+  },
+  ticket: {
+    // height: "415px",
+    // width: "415px",
+    borderRadius: "10px",
+    // border: "solid 4px white",
   },
   text: {
     color: "#041836",
     fontSize: "27px",
+    fontFamily: "DrukWideCy",
+    justifyContent: "center",
+    display: "flex",
+    flexDirection: "column",
+    // paddingRight: "20px",
+    marginRight: "20px",
+  },
+  normalText: {
+    // color: "#041836",
+    fontSize: "22px",
     fontWeight: "bold",
+    fontFamily: "AuthenticSans90",
+    // paddingTop: "7rem",
+  },
+  subText: {
+    fontSize: "15px",
+    color: "#7c7c7c",
+    fontWeight: "normal",
+    fontFamily: "AuthenticSans90",
   },
 };
 
