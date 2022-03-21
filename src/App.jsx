@@ -68,18 +68,13 @@ const App = ({ isServerInfo }) => {
                 Explore Events
               </NavLink>
             </Menu.Item>
-            <Menu.Item key="nft" onClick={() => setInputValue("tickets")}>
-              <NavLink to="/nftBalance" style={{ color: "white" }}>
-                Your Tickets
-              </NavLink>
-            </Menu.Item>
-            <Menu.Item key="transactions">
-              <NavLink to="/Transactions" style={{ color: "white" }}>
-                Your Transactions
+            <Menu.Item key="/">
+              <NavLink to="/faq" style={{ color: "white" }}>
+                FAQ
               </NavLink>
             </Menu.Item>
           </Menu>
-          <Account />
+          <Account setInputValue={setInputValue} />
           <div style={styles.headerRight}>
             {/* <Chains /> */}
             {/* <NativeBalance /> */}
