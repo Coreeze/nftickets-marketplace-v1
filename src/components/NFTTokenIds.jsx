@@ -58,8 +58,8 @@ function NFTTokenIds({ inputValue, setInputValue }) {
   const purchaseItemFunction = "createMarketSale";
   const NFTCollections = getCollectionsByChain(chainId);
 
-  console.log("NFTCollections ", NFTCollections);
-  console.log("NFTTokenIds ", NFTTokenIds);
+  // console.log("NFTCollections ", NFTCollections);
+  // console.log("NFTTokenIds ", NFTTokenIds);
 
   let [color, setColor] = useState("#ffffff");
 
@@ -418,7 +418,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
             ))}
         </Carousel>
         <div style={styles.NFTs}>
-          {inputValue !== "explore" && (
+          {/* {inputValue !== "explore" && (
             <Image
               preview={false}
               src={NFTTokenIds[0]?.image || "error"}
@@ -426,8 +426,8 @@ function NFTTokenIds({ inputValue, setInputValue }) {
               alt=""
               style={styles.ticket}
             />
-          )}
-          {/* {inputValue !== "explore" &&
+          )} */}
+          {inputValue !== "explore" &&
             NFTTokenIds.slice(0, 20).map((nft, index) => (
               <Card
                 hoverable
@@ -453,7 +453,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                     src={nft.image || "error"}
                     fallback={fallbackImg}
                     alt=""
-                    style={{ height: "240px" }}
+                    style={{ height: "100%" }}
                   />
                 }
                 key={index}
@@ -463,7 +463,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                 )}
                 <Meta title={nft.name} description={`#${nft.token_id}`} />
               </Card>
-            ))} */}
+            ))}
         </div>
         {getMarketItem(nftToBuy) ? (
           <Modal
@@ -534,7 +534,6 @@ const styles = {
     borderRadius: "10px",
     marginBottom: "40px",
     paddingBottom: "20px",
-    // paddingTop: "20px",
     padding: "20px",
     borderBottom: "solid 1px #e3e3e3",
   },

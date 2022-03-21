@@ -18,9 +18,10 @@ import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import Text from "antd/lib/typography/Text";
 import NFTMarketTransactions from "components/NFTMarketTransactions";
-import TextField from "@mui/material/TextField";
-import logo from "./logov5.png";
 import UnstyledInput from "components/SearchBar";
+import WhoAreWe from "components/WhoAreWe";
+import FooterComponent from "components/FooterComponent";
+import BottomBanner from "components/BottomBanner";
 const { Header, Footer } = Layout;
 
 const App = ({ isServerInfo }) => {
@@ -38,9 +39,10 @@ const App = ({ isServerInfo }) => {
     <Layout
       style={{
         height: "100vh",
-        overflow: "auto",
+        overflowX: "hidden",
         background:
-          "linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(179, 179,179,1) 100%)",
+          "linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(150, 150,150,1) 100%)",
+        scrollbarWidth: "none",
       }}
     >
       <Router>
@@ -66,7 +68,7 @@ const App = ({ isServerInfo }) => {
                 Explore Events
               </NavLink>
             </Menu.Item>
-            <Menu.Item key="nft">
+            <Menu.Item key="nft" onClick={() => setInputValue("tickets")}>
               <NavLink to="/nftBalance" style={{ color: "white" }}>
                 Your Tickets
               </NavLink>
@@ -84,13 +86,14 @@ const App = ({ isServerInfo }) => {
             {/* <Account /> */}
           </div>
         </Header>
-        {inputValue === "explore" && (
-          <div style={styles.mainTitle}>OWN THE MOMENT</div>
-        )}
+
         <div style={styles.content}>
           <Switch>
             <Route path="/nftBalance">
-              <NFTBalance />
+              <NFTBalance
+                inputValue={inputValue}
+                setInputValue={setInputValue}
+              />
             </Route>
             <Route path="/NFTMarketPlace">
               <NFTTokenIds
@@ -105,23 +108,15 @@ const App = ({ isServerInfo }) => {
           <Redirect to="/NFTMarketPlace" />
         </div>
       </Router>
-      <Footer
-        style={{
-          justifyContent: "end",
-          textAlign: "center",
-          backgroundColor: "transparent",
-        }}
-      >
-        <Text
-          style={{
-            display: "block",
-            color: "black",
-            fontFamily: "AuthenticSans90",
-          }}
-        >
-          Powered by NFTickets
-        </Text>
-      </Footer>
+      {inputValue === "explore" && (
+        <>
+          <div style={styles.mainTitle}>OWN THE MOMENT</div>
+          <WhoAreWe />
+        </>
+      )}
+      {console.log("inputValue ", inputValue)}
+      <FooterComponent />
+      <BottomBanner />
     </Layout>
   );
 };
@@ -156,7 +151,7 @@ const styles = {
     fontWeight: "600",
   },
   mainTitle: {
-    color: "white",
+    color: "black",
     fontFamily: "DrukWideCy",
     alignSelf: "center",
     margin: "20px 30px",

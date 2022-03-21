@@ -21,7 +21,7 @@ const styles = {
   },
 };
 
-function NFTBalance() {
+function NFTBalance({ inputValue, setInputValue }) {
   const [loading, setLoading] = useState(false);
   const { NFTBalance, fetchSuccess } = useNFTBalance(setLoading);
   const { chainId, marketAddress, contractABI } = useMoralisDapp();

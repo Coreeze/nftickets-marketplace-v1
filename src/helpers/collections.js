@@ -1,7 +1,7 @@
-import untolb from "../images/untolb.jpg";
-import event1 from "../images/event1.png";
-import event2 from "../images/event2.jpg";
-import event3 from "../images/event3.jpg";
+import untolb from "../images/untolb-min.jpg";
+import event1 from "../images/event1-min.png";
+import event2 from "../images/event2-min.jpg";
+import event3 from "../images/event3-min.jpg";
 
 export const networkCollections = {
   "0x13881": [
