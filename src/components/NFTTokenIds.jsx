@@ -105,7 +105,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     let secondsToGo = 5;
     const modal = Modal.success({
       title: "Success!",
-      content: `You have purchased this NFT`,
+      content: `You have purchased this NFTicket`,
     });
     setTimeout(() => {
       modal.destroy();
@@ -116,7 +116,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     let secondsToGo = 5;
     const modal = Modal.error({
       title: "Error!",
-      content: `There was a problem when purchasing this NFT`,
+      content: `There was a problem when purchasing this NFTicket`,
     });
     setTimeout(() => {
       modal.destroy();
@@ -442,7 +442,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                       }
                     />
                   </Tooltip>,
-                  <Tooltip title="Buy NFT">
+                  <Tooltip title="Buy NFTicket">
                     <ShoppingCartOutlined onClick={() => handleBuyClick(nft)} />
                   </Tooltip>,
                 ]}
@@ -499,7 +499,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
               }}
             />
             <Alert
-              message="This NFT is currently not for sale"
+              message="This NFTicket is currently not for sale"
               type="warning"
             />
           </Modal>

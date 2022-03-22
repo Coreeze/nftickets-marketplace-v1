@@ -204,7 +204,7 @@ function NFTBalance({ inputValue, setInputValue }) {
                     }
                   />
                 </Tooltip>,
-                <Tooltip title="List NFT for sale">
+                <Tooltip title="List NFTicket for sale">
                   <ShoppingCartOutlined onClick={() => handleSellClick(nft)} />
                 </Tooltip>,
               ]}
