@@ -106,7 +106,7 @@ const WhoAreWe = () => {
               fontSize: "15px",
             }}
           >
-            Fee Transparency
+            Fee Transparency; Free of Scalping; Fan Engagement
           </div>
           <div
             style={{
@@ -114,15 +114,11 @@ const WhoAreWe = () => {
               fontSize: "15px",
             }}
           >
-            Fan Engagement
-          </div>
-          <div
-            style={{
-              fontFamily: "AuthenticSans90",
-              fontSize: "15px",
-            }}
-          >
-            Free of Scalping
+            Ticket trading is only the beginning. Staying true to our vision, we
+            aim to leverage the whole potential of virtually manufactured goods.
+            Such goods are not limited by immutable physical limitations and
+            laws of physics. The only limit is our imagination and our will. The
+            future is here.
           </div>
         </div>
       </div>
