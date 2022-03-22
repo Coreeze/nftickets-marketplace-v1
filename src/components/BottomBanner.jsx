@@ -27,8 +27,8 @@ const BottomBanner = () => {
           fontFamily: "AuthenticSans90",
         }}
       >
-        Thanks for the visit! NFTickets has not launched yet and is still a work
-        in progress🚀
+        NFTickets has not launched yet and is still a work in progress🚀 MVP
+        version 1.1
       </Text>
     </Footer>
   );

@@ -22,6 +22,7 @@ import UnstyledInput from "components/SearchBar";
 import WhoAreWe from "components/WhoAreWe";
 import FooterComponent from "components/FooterComponent";
 import BottomBanner from "components/BottomBanner";
+import PopUp from "components/PopUp";
 const { Header, Footer } = Layout;
 
 const App = ({ isServerInfo }) => {
@@ -45,6 +46,7 @@ const App = ({ isServerInfo }) => {
         scrollbarWidth: "none",
       }}
     >
+      <PopUp />
       <Router>
         <Header style={styles.header}>
           <Logo />
