@@ -1,12 +1,12 @@
 async function main() {
-  const MarketPlaceBoilerPlate = await ethers.getContractFactory(
-    "marketPlaceBoilerPlate"
+  const NfticketsMarketplace = await ethers.getContractFactory(
+    "nfticketsMarketplace"
   );
 
   // Start deployment, returning a promise that resolves to a contract object
-  const marketPlaceBoilerPlate = await MarketPlaceBoilerPlate.deploy();
-  await marketPlaceBoilerPlate.deployed();
-  console.log("Contract deployed to address:", marketPlaceBoilerPlate.address);
+  const nfticketsMarketplace = await NfticketsMarketplace.deploy();
+  await nfticketsMarketplace.deployed();
+  console.log("Contract deployed to address:", nfticketsMarketplace.address);
 }
 
 main()
