@@ -20,7 +20,7 @@ export const networkCollections = {
       location: "Munich, Germany",
       date: "20.03.2022",
       issuer: "NFTickets",
-      addrs: "0x3F93850945e1dFC72aEa7630E80406095bF0ca9b",
+      addrs: "0x25d011B7eA80B6270150e01d8e7c01573516A775",
       about:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     },
@@ -32,7 +32,7 @@ export const networkCollections = {
       location: "Seol, South Korea",
       date: "20.03.2022",
       issuer: "NFTickets",
-      addrs: "0x3F93850945e1dFC72aEa7630E80406095bF0ca9b",
+      addrs: "0xe1A17a271b823B0160853eaa58A281E9Db8F2B32",
     },
     {
       image: event2,
@@ -52,7 +52,7 @@ export const networkCollections = {
       location: "Amterdam, Netherlands",
       date: "20.05.2022",
       issuer: "NFTickets",
-      addrs: "0x3F93850945e1dFC72aEa7630E80406095bF0ca9b",
+      addrs: "0xBc7Df592562F2aA1B60b566A7C159d69E49eC439",
     },
     // {
     //   image:
