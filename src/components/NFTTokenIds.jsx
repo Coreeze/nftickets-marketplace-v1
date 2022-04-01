@@ -21,6 +21,7 @@ import "./styles.css";
 import CircleLoader from "react-spinners/ClipLoader";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import PopUp from "./PopUp";
 
 const { Meta } = Card;
 
@@ -32,6 +33,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     inputValue,
     setLoading
   );
+  console.log("TOTAL NFTS: ", totalNFTs);
   const [visible, setVisibility] = useState(false);
   const [nftToBuy, setNftToBuy] = useState(null);
   const contractProcessor = useWeb3ExecuteFunction();
@@ -56,10 +58,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     ])
   );
   const purchaseItemFunction = "createMarketSale";
-  const NFTCollections = getCollectionsByChain(chainId);
-
-  // console.log("NFTCollections ", NFTCollections);
-  // console.log("NFTTokenIds ", NFTTokenIds);
+  const NFTCollections = getCollectionsByChain("0x13881");
 
   let [color, setColor] = useState("#ffffff");
 
@@ -170,6 +169,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
         )}
         {inputValue !== "explore" && totalNFTs !== undefined && (
           <>
+            {chainId !== "0x13881" && <PopUp />}
             {!fetchSuccess && (
               <>
                 <Alert
