@@ -12,12 +12,14 @@ const PopUp = () => (
         </button>
         <div className="header"> IMPORTANT </div>
         <div className="content">
-          You need to install MetaMask and add the Polygon testnet Mumbai.
-          Follow{" "}
-          <a href="https://blog.polysynth.com/how-to-connect-polygon-testnet-to-metamask-wallet-472bca410d64">
-            this link
-          </a>{" "}
-          for details. The MVP is not yet fully functional otherwise.
+          All NFTickets you see here are deployed on the blockchain already.
+        </div>
+        <div className="content">
+          This MVP is still a WiP and presents a part of our current vision.
+          Thanks for visiting!
+        </div>
+        <div className="content">
+          For any questions, contact us at: lentacris@gmail.com
         </div>
       </div>
     )}

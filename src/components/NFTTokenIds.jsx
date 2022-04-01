@@ -33,7 +33,8 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     inputValue,
     setLoading
   );
-  console.log("TOTAL NFTS: ", totalNFTs);
+  console.log("inputValue: ", inputValue);
+  console.log("NFTTokenIds: ", NFTTokenIds);
   const [visible, setVisibility] = useState(false);
   const [nftToBuy, setNftToBuy] = useState(null);
   const contractProcessor = useWeb3ExecuteFunction();
